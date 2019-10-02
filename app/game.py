@@ -3,6 +3,7 @@ import random
 
 VALID_OPTIONS = ["rock", "paper", "scissors"]
 
+
 def determine_winner(choice1, choice2):
     """
     Determines the winner between two choices from the options: "rock", "paper", and "scissors", according to the following logic:
@@ -20,14 +21,17 @@ def determine_winner(choice1, choice2):
 
     Returns: either the winning choice (e.g. "paper"), or None if there is a Tie.
     """
-
-    winner = "TODO" # TODO: determine the winner between choice1 and choice2
-
+    if choice1 == choice2:
+        winner = None  # represents a tie
+    else:
+        winner = "OOPS"
     return winner
+
 
 if __name__ == "__main__":
 
-    user_choice = input("Please choose either 'rock', 'paper', or 'scissors': ")
+    user_choice = input(
+        "Please choose either 'rock', 'paper', or 'scissors': ")
 
     print("--------------")
     if user_choice.lower() in VALID_OPTIONS:
@@ -39,7 +43,8 @@ if __name__ == "__main__":
     computer_choice = random.choice(VALID_OPTIONS)
     print("The computer chose:", computer_choice)
 
-    winning_choice = None # TODO: determine_winner(user_choice, computer_choice)
+    winning_choice = determine_winner(user_choice, computer_choice)
+
     if winning_choice:
         if winning_choice == user_choice:
             print("Congratulations, you won!")
